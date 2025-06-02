@@ -1,0 +1,25 @@
+
+#carouselExampleCaptions {
+    max-width: 900px;
+    margin: 0 auto;    
+}
+
+.carousel-inner img {
+    height: 600px;     
+    object-fit: cover; 
+}
+
+.card {
+    max-width: 600px;
+    margin: 0 auto; 
+}
+
+.card-img-top {
+    height: 480px;
+    object-fit: cover;
+}
+
+.row {
+    justify-content: center;
+    margin-top: 50px;
+}

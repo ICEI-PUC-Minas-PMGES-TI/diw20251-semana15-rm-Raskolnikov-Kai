@@ -9,15 +9,19 @@ Sugerimos o uso das seguintes ferramentas acessíveis: [FullCalendar](https://fu
 
 ## Informações do trabalho
 
-- Nome:
-- Matricula:
-- Proposta de projeto escolhida:
-- Breve descrição sobre seu projeto:
+- Nome: Kailany Moreira Soares
+- Matricula: 896460
+- Proposta de projeto escolhida: Portal de Nóticias
+- Breve descrição sobre seu projeto: Um portal de nóticias
 
 **Print da tela com a implementação**
 
+![alt text](image-2.png)
+
 << Coloque aqui uma breve explicação da implementação feita nessa etapa>>
 
-<<  COLOQUE A IMAGEM TELA 1 AQUI >>
+O Gráfico de Nóticias que ao passar o mouse em cima exibe quantidade
+![alt text](image.png)
 
-<<  COLOQUE A IMAGEM TELA 2 AQUI >>
+O Caléndário que a cada dia, desde que esteja azul, clicado mostra a nóticia
+![alt text](image-1.png)

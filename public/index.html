@@ -1,0 +1,320 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.5/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-SgOJa3DmI69IUzQ2PVdRZhwQ+dy64/BUtbMJw1MZ8t5HZApcHrRKUc4W0kG879m7" crossorigin="anonymous">
+    <script src="data.json"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script>fetch('data.json')
+  .then(response => response.json())
+  .then(data => {
+    const lista = document.getElementById('lista');
+    data.forEach(pessoa => {
+      const li = document.createElement('li');
+      li.textContent = ${pessoa.nome} - ${pessoa.idade} anos;
+      lista.appendChild(li);
+    });
+  })
+  .catch(error => console.error('Erro ao carregar os dados:', error));
+  </script>
+
+</head>
+<body>
+    <h1>Últimas Notícias</h1>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.5/dist/js/bootstrap.bundle.min.js" integrity="sha384-k6d4wzSIapyDyv1kpU366/PK5hCdSbCRGRCMv+eplOQJWyd1fbcAu9OCUj5zNLiq" crossorigin="anonymous"></script>
+    <div id="carouselExampleCaptions" class="carousel slide" data-bs-ride="carousel">
+        <div class="carousel-indicators" id="carousel-indicators">
+          <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
+          <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="1" aria-label="Slide 2"></button>
+          <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="2" aria-label="Slide 3"></button>
+        </div>
+        <div class="carousel-inner" id="carousel-inner">
+            <div class="carousel-item active">
+            <img src="conclave.jpg" class="d-block w-100" alt="...">
+            <div class="carousel-caption d-none d-md-block">
+              <h5>Conclave</h5>
+              <p>Quem são os cardeais que vão escolher o novo papa.</p>
+            </div>
+          </div>
+          <div class="carousel-item">
+            <img src="cardealbr.jpg" class="d-block w-100" alt="...">
+            <div class="carousel-caption d-none d-md-block">
+              <h5>Cardeal</h5>
+              <p>Qual é a chance de um papa brasileiro? Brasil tem 7 cardeais.</p>
+            </div>
+          </div>
+          <div class="carousel-item">
+            <img src="igrejac.png" class="d-block w-100" alt="...">
+            <div class="carousel-caption d-none d-md-block">
+              <h5>EUApapa</h5>
+              <p>'Não zombe de nós': religiosos criticam post de Trump como papa.</p>
+            </div>
+          </div>
+        </div>
+        <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide="prev">
+          <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+          <span class="visually-hidden">Previous</span>
+        </button>
+        <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide="next">
+          <span class="carousel-control-next-icon" aria-hidden="true"></span>
+          <span class="visually-hidden">Next</span>
+        </button>
+      </div>
+
+      <script>
+        const carouselContainer = document.getElementById("carousel-inner");
+        const indicatorsContainer = document.getElementById("carousel-indicators");
+      
+        let isFirst = true;
+      
+        for (let i = 0; i < dados.noticias.length; i++) {
+          const noticia = dados.noticias[i];
+      
+          if (noticia.destaque) {
+            const slide = document.createElement("div");
+            slide.className = "carousel-item" + (isFirst ? " active" : "");
+      
+            slide.innerHTML = `
+              <a href="detalhes.html?idNoticia=${noticia.id}">
+                <img src="${noticia.imagem_principal}" class="d-block w-100" alt="${noticia.titulo}" style="object-fit: cover; height: 400px;">
+              </a>
+              <div class="carousel-caption d-none d-md-block">
+                <h5>${noticia.titulo}</h5>
+                <p>${noticia.descricao}</p>
+              </div>
+            `;
+      
+            carouselContainer.appendChild(slide);
+      
+            const indicator = document.createElement("button");
+            indicator.type = "button";
+            indicator.setAttribute("data-bs-target", "#carouselExampleCaptions");
+            indicator.setAttribute("data-bs-slide-to", indicatorsContainer.children.length);
+            indicator.className = isFirst ? "active" : "";
+            if (isFirst) {
+              indicator.setAttribute("aria-current", "true");
+            }
+            indicator.setAttribute("aria-label", `Slide ${indicatorsContainer.children.length + 1}`);
+      
+            indicatorsContainer.appendChild(indicator);
+      
+            isFirst = false;
+          }
+        }
+      </script>
+
+      <h2>Gráfico de Nóticias</h2>
+      <div>
+        <canvas id="myChart"></canvas>
+      </div>           
+
+      <div class="row row-cols-1 row-cols-md-2 g-4">
+        <div class="col">
+          <div class="card">
+            <img src="gaga.png" class="card-img-top" alt="...">
+            <div class="card-body">
+              <h5 class="card-title">Lady Gaga no Brasil</h5>
+              <p class="card-text">'Nada poderia ter me preparado': Lady Gaga agradece a fãs brasileiros.</p>
+            </div>
+          </div>
+        </div>
+        <div class="col">
+          <div class="card">
+            <img src="bomba.png" class="card-img-top" alt="...">
+            <div class="card-body">
+              <h5 class="card-title">Ameaça de bomba</h5>
+              <p class="card-text">Ação contra atentado no show de Gaga 'salvou centenas de vidas', diz polícia.</p>
+            </div>
+          </div>
+        </div>
+        <div class="col">
+          <div class="card">
+            <img src="igrejac.png" class="card-img-top" alt="...">
+            <div class="card-body">
+              <h5 class="card-title">Igreja Católica</h5>
+              <p class="card-text">'Não zombe de nós': religiosos criticam post de Trump como papa.</p>
+            </div>
+          </div>
+        </div>
+        <div class="col">
+          <div class="card">
+            <img src="deportacaom.png" class="card-img-top" alt="...">
+            <div class="card-body">
+              <h5 class="card-title">Deportações em massa</h5>
+              <p class="card-text">Trump diz que 'não sabe se deve respeitar' a Constituição dos EUA.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    <div id="noticias-container">
+    </div>
+    <script src="public/assets/script/data.js"></script>
+    <script>
+       const container = document.getElementById("noticias-container");
+        let noticiasContent = container.innerHTML;
+        console.log(dados.noticias);
+
+        for(let i=0; i< dados.noticias.length; i++){
+            let noticia = dados.noticias[i];
+            console.log(noticia.titulo);
+
+            noticiasContent += `<div class="noticia">
+                <h2><a href="detalhes.html?idNoticia=${noticia.id}">${noticia.titulo}
+                    </a>
+                </h2>
+                <p><em>Por ${noticia.autor} - ${noticia.data}</em></p>
+                <img src="${noticia.imagem_principal}" alt="${noticia.titulo}"></img>
+                <p>${noticia.descricao}</p>
+            </div>    
+          `;
+
+        }
+        container.innerHTML = noticiasContent;
+
+    </script>
+    <div id="noticias-calendario" style="max-width: 600px; margin: 50px auto;">
+  <h3>Calendário com notícias </h3>
+  <div id="calendario"></div>
+  <div id="noticias-do-dia" style="margin-top: 20px;"></div>
+</div>
+
+<script>
+  const noticias = [
+    { data: '2025-06-01', titulo: 'CPI das Bets investiga influência dos jogos de apostas online no Brasil' },
+    { data: '2025-06-01', titulo: 'Tempestade atinge o sul do país' },
+    { data: '2025-06-05', titulo: 'Igreja Católica tece críticas a Trump' },
+    { data: '2025-06-10', titulo: 'Elon Musk é afastado do Governo Trump' },
+    { data: '2025-06-15', titulo: 'Descoberta arqueológica surpreende cientistas' },
+    { data: '2025-06-22', titulo: 'Inflação anualizada dispara para 5,06% em fevereiro, maior alta desde 2023' },
+  ];
+
+  function gerarCalendario(ano, mes) {
+    const calendario = document.getElementById('calendario');
+    calendario.innerHTML = '';
+
+    const data = new Date(ano, mes);
+    const ultimoDia = new Date(ano, mes + 1, 0).getDate();
+    const primeiroDiaSemana = data.getDay();
+
+    const meses = ['Janeiro', 'Fevereiro', 'Março', 'Abril', 'Maio', 'Junho', 'Julho',
+                   'Agosto', 'Setembro', 'Outubro', 'Novembro', 'Dezembro'];
+
+    let html = `<h4>${meses[mes]} ${ano}</h4>`;
+    html += `<button onclick="mudarMes(-1)">◀</button> <button onclick="mudarMes(1)">▶</button>`;
+    html += '<table class="table table-bordered text-center">';
+    html += '<thead><tr><th>Dom</th><th>Seg</th><th>Ter</th><th>Qua</th><th>Qui</th><th>Sex</th><th>Sáb</th></tr></thead>';
+    html += '<tbody><tr>';
+
+    let diaSemana = 0;
+    for (let i = 0; i < primeiroDiaSemana; i++) {
+      html += '<td></td>';
+      diaSemana++;
+    }
+
+    for (let dia = 1; dia <= ultimoDia; dia++) {
+      const dataFormatada = `${ano}-${String(mes + 1).padStart(2, '0')}-${String(dia).padStart(2, '0')}`;
+      const temNoticia = noticias.some(n => n.data === dataFormatada);
+
+      html += `<td style="cursor: pointer; background-color: ${temNoticia ? '#e0f7fa' : '#fff'};" onclick="mostrarNoticias('${dataFormatada}')">${dia}</td>`;
+      diaSemana++;
+
+      if (diaSemana > 6) {
+        html += '</tr><tr>';
+        diaSemana = 0;
+      }
+    }
+
+    html += '</tr></tbody></table>';
+    calendario.innerHTML = html;
+  }
+
+  let dataAtual = new Date();
+  let anoAtual = dataAtual.getFullYear();
+  let mesAtual = dataAtual.getMonth();
+
+  function mudarMes(delta) {
+    mesAtual += delta;
+    if (mesAtual > 11) {
+      mesAtual = 0;
+      anoAtual++;
+    } else if (mesAtual < 0) {
+      mesAtual = 11;
+      anoAtual--;
+    }
+    gerarCalendario(anoAtual, mesAtual);
+  }
+
+  function mostrarNoticias(data) {
+    const container = document.getElementById('noticias-do-dia');
+    const lista = noticias.filter(n => n.data === data);
+
+    if (lista.length === 0) {
+      container.innerHTML = `<p><strong>${data}:</strong> Nenhuma notícia encontrada.</p>`;
+      return;
+    }
+
+    let html = `<h5>Notícias de ${data}:</h5><ul>`;
+    lista.forEach(n => {
+      html += `<li>${n.titulo}</li>`;
+    });
+    html += '</ul>';
+    container.innerHTML = html;
+  }
+
+  gerarCalendario(anoAtual, mesAtual);
+</script>
+
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Mapa de Notícias</title>
+  <link href="https://api.mapbox.com/mapbox-gl-js/v2.7.0/mapbox-gl.css" rel="stylesheet" />
+  <script src="https://api.mapbox.com/mapbox-gl-js/v2.7.0/mapbox-gl.js"></script>
+  <style>
+    #map {
+      width: 300px;
+      height: 300px;
+      border: 1px solid #ccc;
+      margin: 20px auto;
+      border-radius: 6px;
+    }
+  </style>
+</head>
+<body>
+
+  <div id="map"></div>
+
+  <script>
+    mapboxgl.accessToken = 'SUA_CHAVE_DO_MAPBOX_AQUI'; 
+
+    const map = new mapboxgl.Map({
+      container: 'map',
+      style: 'mapbox://styles/mapbox/streets-v11',
+      center: [-51.9253, -14.2350], 
+      zoom: 4
+    });
+
+    const noticias = [
+      { cidade: 'São Paulo', estado: 'SP', coords: [-46.6333, -23.5505], titulo: 'Notícia em SP' },
+      { cidade: 'Rio de Janeiro', estado: 'RJ', coords: [-43.1729, -22.9068], titulo: 'Notícia no RJ' }
+    ];
+
+    noticias.forEach(n => {
+      new mapboxgl.Marker()
+        .setLngLat(n.coords)
+        .setPopup(new mapboxgl.Popup().setHTML(`<strong>${n.titulo}</strong><br>${n.cidade} - ${n.estado}`))
+        .addTo(map);
+    });
+  </script>
+
+</body>
+</html>
+
+</body>
+</html>
